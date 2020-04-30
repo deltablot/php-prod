@@ -1,3 +1,6 @@
+# https://github.com/deltablot/php-prod
+# License: MIT
+
 FROM php:7.4-fpm-alpine
 
 # Use the default production configuration
