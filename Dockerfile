@@ -3,9 +3,12 @@
 
 FROM php:7.4-fpm-alpine
 
-# Use the default production configuration
+# use default prod config
 RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
 
-# Override with custom settings
+# sessions
+RUN mkdir /sessions && chown 82:82 /sessions && chmod 700 /sessions
 COPY config/sessions.ini $PHP_INI_DIR/conf.d/
+
+# miscellaneous
 COPY config/misc.ini $PHP_INI_DIR/conf.d/
