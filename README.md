@@ -6,7 +6,7 @@ It's the same except with a custom configuration more suitable for production us
 
 # Usage
 
-Replace `php-7.4-fpm-alpine` in your `docker-compose.yml` file with `deltablot/php-prod`.
+Replace `php:7.4-fpm-alpine` in your `docker-compose.yml` file with `deltablot/php-prod:7.4`.
 
 The image is rebuilt automatically whenever a new version of the original `php` image is pushed.
 
