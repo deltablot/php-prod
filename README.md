@@ -35,7 +35,7 @@ location ~ \.php$ {
 
 Adjust the path to where your code exists (and it will depend on how you mount the volumes of course).
 
-### Example `docker-compose.yml` with nginx in a container.
+### Example `docker-compose.yml` with nginx in a container
 
 The websites are mounted in `/sites` in the (read-only) nginx container, and the local `nginx/sites` folder contain folders of the websites source files. The local `nginx/conf` folder contains the nginx config files.
 
