@@ -16,7 +16,7 @@ Replace `php:7.4-fpm-alpine` in your `docker-compose.yml` file with `deltablot/p
 
 Use `deltablot/php-prod` as base image and `docker-php-ext-install` to install the required extensions.
 
-Example with `mysqli` is present in this repository: [Dockerfile.mysql](Dockerfile.mysqli).
+Example with `mysqli` is present in this repository: [Dockerfile.mysqli](Dockerfile.mysqli).
 
 ## Running your code
 
@@ -35,7 +35,9 @@ location ~ \.php$ {
 
 Adjust the path to where your code exists (and it will depend on how you mount the volumes of course).
 
-Example `docker-compose.yml` with nginx in a container. The websites are mounted in `/sites` in the nginx container, and the local `/sites` folder contain folders of the websites source files.
+### Example `docker-compose.yml` with nginx in a container.
+
+The websites are mounted in `/sites` in the (read-only) nginx container, and the local `nginx/sites` folder contain folders of the websites source files. The local `nginx/conf` folder contains the nginx config files.
 
 ~~~yml
 # NGINX
