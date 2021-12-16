@@ -1,6 +1,7 @@
 name: Build fresh image
 
 on:
+    push:
     schedule:
       - cron: "42 03 * * *"
 
@@ -38,7 +39,7 @@ jobs:
                 cache-to: type=local,dest=/tmp/.buildx-cache-new
                 platforms: linux/amd64
                 push: true
-                tags: "7.4"
+                tags: deltablot/php-prod:7.4, deltablot/php-prod:latest
 
             - name: Run vulnerabilities scanner
               uses: anchore/scan-action@v2
