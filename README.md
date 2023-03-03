@@ -1,6 +1,6 @@
 # PHP-prod
 
-Use this image instead of the normal php-7.4-fpm-alpine.
+Use this image instead of the normal php-8.1-fpm-alpine.
 
 It's the same except with a custom configuration more suitable for production use.
 
@@ -10,7 +10,7 @@ The image is rebuilt automatically whenever a new version of the original `php` 
 
 ## Simple PHP app with no specific extensions required
 
-Replace `php:7.4-fpm-alpine` in your `docker-compose.yml` file with `deltablot/php-prod:7.4`.
+Replace `php:8.1-fpm-alpine` in your `docker-compose.yml` file with `deltablot/php-prod:8.1`.
 
 ## PHP app requiring an extension
 
@@ -61,7 +61,7 @@ nginx:
 
 # PHP
 php:
-  image: deltablot/php-prod:7.4
+  image: deltablot/php-prod:8.1
   build:
     context: ./php-prod
     dockerfile: Dockerfile.mysqli
