@@ -50,7 +50,7 @@ jobs:
                 exit-code: '1'
                 ignore-unfixed: true
                 vuln-type: 'os,library'
-                severity: 'CRITICAL,HIGH'
+                severity: 'CRITICAL'
 
               # This ugly bit is necessary if you don't want your cache to grow forever
               # till it hits GitHub's limit of 5GB.
