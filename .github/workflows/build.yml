@@ -41,11 +41,16 @@ jobs:
                 push: true
                 tags: deltablot/php-prod:8.1, deltablot/php-prod:latest, deltablot/php-prod:8
 
-            - name: Run vulnerabilities scanner
-              uses: anchore/scan-action@v3
+            # VULN SCAN
+            - name: Run Trivy vulnerability scanner
+              uses: aquasecurity/trivy-action@master
               with:
-                image: deltablot/php-prod:8.1
-                fail-build: true
+                image-ref: deltablot/php-prod:latest
+                format: 'table'
+                exit-code: '1'
+                ignore-unfixed: true
+                vuln-type: 'os,library'
+                severity: 'CRITICAL,HIGH'
 
               # This ugly bit is necessary if you don't want your cache to grow forever
               # till it hits GitHub's limit of 5GB.
