@@ -21,9 +21,9 @@ jobs:
               uses: actions/cache@v3
               with:
                 path: /tmp/.buildx-cache
-                key: ${{ runner.os }}-buildxK-${{ github.sha }}
+                key: ${{ runner.os }}-buildxyK-${{ github.sha }}
                 restore-keys: |
-                  ${{ runner.os }}-buildxK-
+                  ${{ runner.os }}-buildxyK-
             # https://github.com/docker/login-action#docker-hub
             - name: Login to Docker Hub
               uses: docker/login-action@v2
@@ -35,8 +35,8 @@ jobs:
               uses: docker/build-push-action@v4
               with:
                 context: .
-                cache-from: type=local,src=/tmp/.buildx-cache
-                cache-to: type=local,dest=/tmp/.buildx-cache-new
+                cache-from: type=local,src=/tmp/.buildxy-cache
+                cache-to: type=local,dest=/tmp/.buildxy-cache-new
                 platforms: linux/amd64
                 push: true
                 tags: deltablot/php-prod:8.1, deltablot/php-prod:latest, deltablot/php-prod:8
@@ -59,5 +59,5 @@ jobs:
               # https://github.com/moby/buildkit/issues/1896
             - name: Move cache
               run: |
-                rm -rf /tmp/.buildx-cache
-                mv /tmp/.buildx-cache-new /tmp/.buildx-cache
+                rm -rf /tmp/.buildxy-cache
+                mv /tmp/.buildx-cache-new /tmp/.buildxy-cache
