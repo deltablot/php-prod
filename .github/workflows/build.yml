@@ -8,6 +8,8 @@ on:
 jobs:
     buildandpush:
         runs-on: ubuntu-latest
+        permissions:
+            packages: write
         name: Build images and push to registry
         steps:
             - name: Checkout repo
