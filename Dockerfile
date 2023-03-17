@@ -1,6 +1,6 @@
 # https://github.com/deltablot/php-prod
 # License: MIT
-FROM php:8.1-fpm-alpine
+FROM php:8.1.17-fpm-alpine
 
 # use default prod config
 RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
