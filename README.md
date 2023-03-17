@@ -61,7 +61,7 @@ nginx:
 
 # PHP
 php:
-  image: deltablot/php-prod:8.1
+  image: ghcri.io/deltablot/php-prod:8.1
   build:
     context: ./php-prod
     dockerfile: Dockerfile.mysqli
