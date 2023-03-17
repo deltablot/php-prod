@@ -36,11 +36,9 @@ jobs:
               uses: docker/build-push-action@v4
               with:
                 context: .
-                  #cache-from: type=local,src=/tmp/.buildxy-cache
-                  #cache-to: type=local,dest=/tmp/.buildxyz-cache-new
                 platforms: linux/amd64
                 push: true
-                tags: deltablot/php-prod:8.1, deltablot/php-prod:latest, deltablot/php-prod:8
+                tags: ghcr.io/deltablot/php-prod:8.1, ghcr.io/deltablot/php-prod:latest, ghcr.io/deltablot/php-prod:8
 
             # VULN SCAN
             - name: Run Trivy vulnerability scanner
