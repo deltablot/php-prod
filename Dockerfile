@@ -1,6 +1,5 @@
 # https://github.com/deltablot/php-prod
 # License: MIT
-
 FROM php:8.1-fpm-alpine
 
 # use default prod config

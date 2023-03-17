@@ -20,7 +20,7 @@ jobs:
             - name: Cache Docker layers
               uses: actions/cache@v3
               with:
-                path: /tmp/.buildx-cache
+                path: /tmp/.buildxyz-cache
                 key: ${{ runner.os }}-buildxyK-${{ github.sha }}
                 restore-keys: |
                   ${{ runner.os }}-buildxyK-
@@ -35,8 +35,8 @@ jobs:
               uses: docker/build-push-action@v4
               with:
                 context: .
-                cache-from: type=local,src=/tmp/.buildxy-cache
-                cache-to: type=local,dest=/tmp/.buildxy-cache-new
+                cache-from: type=local,src=/tmp/.buildxyz-cache
+                cache-to: type=local,dest=/tmp/.buildxyz-cache-new
                 platforms: linux/amd64
                 push: true
                 tags: deltablot/php-prod:8.1, deltablot/php-prod:latest, deltablot/php-prod:8
@@ -60,4 +60,4 @@ jobs:
             - name: Move cache
               run: |
                 rm -rf /tmp/.buildxy-cache
-                mv /tmp/.buildx-cache-new /tmp/.buildxy-cache
+                mv /tmp/.buildxyz-cache-new /tmp/.buildxyz-cache
