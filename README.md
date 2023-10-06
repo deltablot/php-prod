@@ -10,11 +10,11 @@ The image is rebuilt automatically whenever a new version of the original `php` 
 
 ## Simple PHP app with no specific extensions required
 
-Replace `php:8.1-fpm-alpine` in your `docker-compose.yml` file with `deltablot/php-prod:8.1`.
+Replace `php:8.1-fpm-alpine` in your `docker-compose.yml` file with `ghcr.io/deltablot/php-prod:8.1`.
 
 ## PHP app requiring an extension
 
-Use `deltablot/php-prod` as base image and `docker-php-ext-install` to install the required extensions.
+Use `ghcr.io/deltablot/php-prod` as base image and `docker-php-ext-install` to install the required extensions.
 
 Example with `mysqli` is present in this repository: [Dockerfile.mysqli](Dockerfile.mysqli).
 
@@ -61,7 +61,7 @@ nginx:
 
 # PHP
 php:
-  image: ghcri.io/deltablot/php-prod:8.1
+  image: ghcr.io/deltablot/php-prod:8.1
   build:
     context: ./php-prod
     dockerfile: Dockerfile.mysqli
@@ -90,7 +90,7 @@ Force httponly and secure flag for cookies.
 
 * Don't expose PHP version
 * Make sure only PHP files are processed
-* Disallow url_fopen
+* Disallow `url_fopen`
 
 # Source
 
