@@ -18,9 +18,6 @@ jobs:
             # https://github.com/marketplace/actions/docker-setup-buildx
             - name: Set up Docker Buildx
               uses: docker/setup-buildx-action@v2
-              with:
-                driver-opts: |
-                  image=moby/buildkit:v0.10.6
 
                 # - name: Cache Docker layers
                 #   uses: actions/cache@v3
@@ -41,6 +38,8 @@ jobs:
               uses: docker/build-push-action@v4
               with:
                 context: .
+                cache-from: type=gha
+                cache-to: type=gha,mode=max
                 platforms: linux/amd64
                 push: true
                 tags: ghcr.io/deltablot/php-prod:8.1, ghcr.io/deltablot/php-prod:latest, ghcr.io/deltablot/php-prod:8
@@ -51,18 +50,7 @@ jobs:
               with:
                 image-ref: deltablot/php-prod:latest
                 format: 'table'
-                # TMP IGNORED because of CVE-2023-23914
                 exit-code: '0'
-                ignore-unfixed: true
+                ignore-unfixed: false
                 vuln-type: 'os,library'
                 severity: 'CRITICAL'
-
-              # This ugly bit is necessary if you don't want your cache to grow forever
-              # till it hits GitHub's limit of 5GB.
-              # Temp fix
-              # https://github.com/docker/build-push-action/issues/252
-              # https://github.com/moby/buildkit/issues/1896
-              #- name: Move cache
-              #  run: |
-              #    rm -rf /tmp/.buildxy-cache
-              #    mv /tmp/.buildxyz-cache-new /tmp/.buildxyz-cache
