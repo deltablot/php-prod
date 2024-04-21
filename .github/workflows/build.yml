@@ -13,7 +13,7 @@ jobs:
         name: Build images and push to registry
         steps:
             - name: Checkout repo
-              uses: actions/checkout@v3
+              uses: actions/checkout@v4
 
             # https://github.com/marketplace/actions/docker-setup-buildx
             - name: Set up Docker Buildx
@@ -35,7 +35,7 @@ jobs:
                 cache-to: type=gha,mode=max
                 platforms: linux/amd64
                 push: true
-                tags: ghcr.io/deltablot/php-prod:8.1, ghcr.io/deltablot/php-prod:latest, ghcr.io/deltablot/php-prod:8
+                tags: ghcr.io/deltablot/php-prod:8.3, ghcr.io/deltablot/php-prod:latest, ghcr.io/deltablot/php-prod:8
 
             # VULN SCAN
             - name: Run Trivy vulnerability scanner
