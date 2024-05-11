@@ -42,7 +42,7 @@ The websites are mounted in `/sites` in the (read-only) nginx container, and the
 ~~~yml
 # NGINX
 nginx:
-  image: nginx:1.17-alpine
+  image: nginx:1.26-alpine
   container_name: nginx
   restart: always
   read_only: true
@@ -53,9 +53,6 @@ nginx:
   volumes:
     - ./nginx/conf:/etc/nginx:ro
     - ./nginx/sites:/sites:ro
-    - ./nginx/logs:/var/log/nginx
-    - ./nginx/cache:/var/cache/nginx
-    - ./nginx/pid:/var/run
   networks:
     - your-net
 
