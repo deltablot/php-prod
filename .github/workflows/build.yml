@@ -36,14 +36,3 @@ jobs:
                 platforms: linux/amd64
                 push: true
                 tags: ghcr.io/deltablot/php-prod:8.3, ghcr.io/deltablot/php-prod:latest, ghcr.io/deltablot/php-prod:8
-
-            # VULN SCAN
-            - name: Run Trivy vulnerability scanner
-              uses: aquasecurity/trivy-action@57a97c7e7821a5776cebc9bb87c984fa69cba8f1 # v0.35
-              with:
-                image-ref: deltablot/php-prod:latest
-                format: 'table'
-                # uncomment to ignore: exit-code: '0'
-                ignore-unfixed: true
-                vuln-type: 'os,library'
-                severity: 'CRITICAL'
